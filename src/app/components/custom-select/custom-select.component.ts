@@ -1,40 +1,35 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'custom-input',
-  templateUrl: './custom-input.component.html',
-  styleUrls: ['./custom-input.component.scss'],
+  selector: 'custom-select',
+  templateUrl: './custom-select.component.html',
+  styleUrls: ['./custom-select.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CustomInputComponent),
-      multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => CustomInputComponent),
+      useExisting: forwardRef(() => CustomSelectComponent),
       multi: true
     }
   ]
 })
-export class CustomInputComponent  implements ControlValueAccessor, Validator {
+export class CustomSelectComponent  implements ControlValueAccessor {
 
   @Input() label!: string;
-  @Input() type: string = 'text';
   @Input() id!: string;
   @Input() name!: string;
   @Input() required: boolean = false;
   @Input() disabled: boolean = false;
+  @Input() multiple!: boolean;
+  @Input() options!: { label: string, value: any }[];
   @Input() placeholder: string = '';
   @Input() ionChange!: (event: any) => void;
   @Input() ionBlur!: (event: any) => void;
   @Input() ionFocus!: (event: any) => void;
   value: any = '';
-  
+
   constructor() { }
 
-  // ControlValueAccessor methods
   onChange!: (value: any) => void;
   onTouched!: () => void;
 
@@ -52,17 +47,6 @@ export class CustomInputComponent  implements ControlValueAccessor, Validator {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-  }
-
-  // Validator method
-  validate() {
-    if (this.required && !this.value) {
-      return {
-        required: true
-      };
-    }
-
-    return null;
   }
 
   // Event handlers
