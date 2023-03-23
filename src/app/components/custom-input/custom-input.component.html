@@ -1,0 +1,15 @@
+<ion-item>
+  <ion-label>{{ label }}</ion-label>
+  <ion-input 
+    [type]="type" 
+    [id]="id"
+    [name]="name"
+    [required]="required"
+    [disabled]="disabled"
+    [(ngModel)]="value" 
+    [placeholder]="placeholder"
+    (ionChange)="onIonChange($event)"
+    (ionBlur)="onIonBlur($event)"
+    (ionFocus)="onIonFocus($event)"
+  ></ion-input>
+</ion-item>
