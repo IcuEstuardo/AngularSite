@@ -1,9 +1,46 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="page">
+    <div class="cuadro">
+      <h1>Hola</h1>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <custom-input label="Username" type="text" id="username" name="username" [required]="true" placeholder="Username" 
+                        (ionChange)="onUsernameChange($event)" (ionBlur)="onUsernameBlur($event)" (ionFocus)="onUsernameFocus($event)"
+                        formControlName="username">
+          </custom-input>
+        </ion-item>
+      
+        <ion-item>
+          <custom-input label="Password" type="password" id="password" name="password" [required]="true" placeholder="Password" 
+                        (ionChange)="onPasswordChange($event)" (ionBlur)="onPasswordBlur($event)" (ionFocus)="onPasswordFocus($event)"
+                        formControlName="password">
+          </custom-input>
+        </ion-item>
+      
+        <ion-item>
+          <custom-input label="Email" type="email" id="email" name="email" [required]="true" placeholder="Email" 
+                        (ionChange)="onEmailChange($event)" (ionBlur)="onEmailBlur($event)" (ionFocus)="onEmailFocus($event)"
+                        formControlName="email">
+          </custom-input>
+        </ion-item>
+      
+        <ion-item>
+          <custom-input label="Phone" type="tel" id="phone" name="phone" [required]="true" placeholder="Phone" 
+                        (ionChange)="onPhoneChange($event)" (ionBlur)="onPhoneBlur($event)" (ionFocus)="onPhoneFocus($event)"
+                        formControlName="phone">
+          </custom-input>
+        </ion-item>
 
+        <ion-item>
+          <custom-select label="Gender" id="gender" name="gender" [required]="true" [options]="genders" placeholder="Gender" 
+                         (ionChange)="onGenderChange($event)" (ionBlur)="onGenderBlur($event)" (ionFocus)="onGenderFocus($event)"
+                         formControlName="gender">
+          </custom-select>
+        </ion-item>
+      
+        <ion-button type="submit" [disabled]="myForm.invalid">Submit</ion-button>
+      </form>
+      
+    </div>
+  </div>
 </ion-content>

@@ -25,10 +25,6 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-ion-content {
-  --ion-background-color: #ececec;
-}
-
 ion-row {
   width: 100%;
 }
@@ -40,12 +36,17 @@ ion-row {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: #ececec;
 }
 
 .cuadro {
   background-color: white;
   width: 500px;
   min-height: auto;
+
+  text-align: center;
+  padding: 50px 20px 70px;
 }
 
 @media screen and (max-width: 720px) {
